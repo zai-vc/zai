@@ -1,21 +1,51 @@
 {
+  "private": true,
   "name": "zai",
-  "displayName": "zai",
-  "description": "zai",
-  "version": "0.0.1",
+  "displayName": "Zai: Zig AI coding assistant",
+  "version": "1.0.0",
+  "description": "AI coding assistant for Zig",
+  "license": "Apache-2.0",
+  "publisher": "hexops",
+  "homepage": "https://github.com/hexops/zai",
+  "bugs": {
+    "url": "https://github.com/hexops/zai/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hexops/zai"
+  },
+  "keywords": [
+    "zai",
+    "hexops",
+    "openai",
+    "ai",
+    "assistant",
+    "llm",
+    "zig"
+  ],
   "engines": {
-    "vscode": "^1.93.0"
+    "vscode": "^1.79.0"
   },
   "categories": [
-    "Other"
+    "AI",
+    "Chat",
+    "Snippets",
+    "Education",
+    "Machine Learning",
+    "Programming Languages"
   ],
-  "activationEvents": [],
+  "activationEvents": [
+    "onLanguage",
+    "onLanguage:zig",
+    "onStartupFinished"
+  ],
   "main": "./dist/extension.js",
   "contributes": {
     "commands": [
       {
         "command": "zai.helloWorld",
-        "title": "Hello World"
+        "title": "Hello World",
+        "category": "Zai"
       }
     ]
   },
