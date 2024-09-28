@@ -41,17 +41,65 @@
   ],
   "main": "./dist/extension.js",
   "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "zai-chat",
+          "title": "Zai Chat",
+          "icon": "media/sidebar-icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "zai-chat": [
+        {
+          "type": "webview",
+          "id": "zaiChatView",
+          "name": "Zai Chat"
+        }
+      ]
+    },
     "commands": [
       {
-        "command": "zai.helloWorld",
-        "title": "Hello World",
+        "command": "zai.openChat",
+        "title": "Open Chat",
         "category": "Zai"
       }
-    ]
+    ],
+    "keybindings": [
+      {
+        "command": "zai.openChat",
+        "key": "ctrl+shift+z",
+        "mac": "cmd+shift+z"
+      }
+    ],
+    "configuration": {
+      "title": "Zai",
+      "properties": {
+        "zai.api.url": {
+          "type": "string",
+          "default": "https://openrouter.ai/api/v1",
+          "description": "LLM API URL (OpenAI-compatible endpoint, often ending in /v1)"
+        },
+        "zai.api.key": {
+          "type": "string",
+          "default": "",
+          "description": "API Key for LLM endpoint"
+        },
+        "zai.api.model": {
+          "type": "string",
+          "default": "meta-llama/llama-3.1-70b-instruct",
+          "description": "Model name to send to LLM API"
+        }
+      }
+    }
   },
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "vscode:prepublish": "pnpm run package",
-    "compile": "pnpm run check-types && pnpm run lint && node esbuild.js",
+    "compile": "pnpm run check-types && pnpm run lint && node esbuild.js && pnpm run package",
     "watch": "npm-run-all -p watch:*",
     "watch:esbuild": "node esbuild.js --watch",
     "watch:tsc": "tsc --noEmit --watch --project tsconfig.json",
@@ -64,16 +112,20 @@
     "test": "vscode-test"
   },
   "devDependencies": {
-    "@types/vscode": "^1.93.0",
     "@types/mocha": "^10.0.7",
     "@types/node": "20.x",
+    "@types/vscode": "^1.93.0",
     "@typescript-eslint/eslint-plugin": "^8.3.0",
     "@typescript-eslint/parser": "^8.3.0",
-    "eslint": "^9.9.1",
-    "esbuild": "^0.23.1",
-    "npm-run-all": "^4.1.5",
-    "typescript": "^5.5.4",
     "@vscode/test-cli": "^0.0.10",
-    "@vscode/test-electron": "^2.4.1"
+    "@vscode/test-electron": "^2.4.1",
+    "esbuild": "^0.23.1",
+    "eslint": "^9.9.1",
+    "npm-run-all": "^4.1.5",
+    "typescript": "^5.5.4"
+  },
+  "dependencies": {
+    "marked": "^14.1.2",
+    "openai": "^4.65.0"
   }
 }
