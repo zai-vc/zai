@@ -114,6 +114,7 @@
   "devDependencies": {
     "@types/mocha": "^10.0.7",
     "@types/node": "20.x",
+    "@types/play-sound": "^1.1.2",
     "@types/vscode": "^1.93.0",
     "@typescript-eslint/eslint-plugin": "^8.3.0",
     "@typescript-eslint/parser": "^8.3.0",
@@ -125,7 +126,13 @@
     "typescript": "^5.5.4"
   },
   "dependencies": {
+    "@langchain/community": "^0.3.3",
+    "@langchain/core": "^0.3.3",
+    "@langchain/openai": "^0.3.2",
+    "langchain": "^0.3.2",
     "marked": "^14.1.2",
-    "openai": "^4.65.0"
+    "openai": "^4.65.0",
+    "play-sound": "^1.1.6",
+    "raw-loader": "^4.0.2"
   }
 }
